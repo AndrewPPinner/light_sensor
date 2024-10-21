@@ -82,8 +82,9 @@ void UpdateSensor() {
   if (https.begin(client, _serverName))
   {
     JsonDocument doc;
-    doc["Location"] = "Middle Pane";
-    doc["LightValue"] = lux;
+    doc["Location"] = "Cilantro";
+    doc["SensorValue"] = lux;
+    doc["SensorType"] = "Light_Sensor";
 
     String request;
     serializeJson(doc, request);
