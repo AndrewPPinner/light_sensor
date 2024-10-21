@@ -116,6 +116,6 @@ void loop()
     {
       UpdateSensor();
     }
-    delay(600000);
+    delay(6000000);
   }
 }
