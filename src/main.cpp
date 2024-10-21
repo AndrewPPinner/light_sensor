@@ -51,8 +51,11 @@ void GetAuth() {
 
       https.addHeader("Content-Type", "application/json");
       int httpCode = https.POST(request);
-      token = https.getString();
-      Serial.println(token);
+
+      JsonDocument response;
+      deserializeJson(response, https.getStream());
+      token = response["Token"].as<String>();
+
       https.end();
     }
     else
@@ -79,7 +82,7 @@ void UpdateSensor() {
   if (https.begin(client, _serverName))
   {
     JsonDocument doc;
-    doc["Location"] = "";
+    doc["Location"] = "Middle Pane";
     doc["LightValue"] = lux;
 
     String request;
@@ -112,6 +115,6 @@ void loop()
     {
       UpdateSensor();
     }
-    delay(6000);
+    delay(600000);
   }
 }
